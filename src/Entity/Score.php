@@ -8,6 +8,17 @@ use Doctrine\ORM\Mapping as ORM;
 #[ORM\Entity(repositoryClass: ScoreRepository::class)]
 class Score
 {
+    public function __construct(
+        string $term, int $providerId,
+        int $score, int $totalCount, int $positiveCount
+    ) {
+        $this->term = $term;
+        $this->providerId = $providerId;
+        $this->score = $score;
+        $this->totalCount = $totalCount;
+        $this->positiveCount = $positiveCount;
+    }
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -17,16 +28,16 @@ class Score
     private ?string $term = null;
 
     #[ORM\Column]
-    private ?int $provider_id = null;
+    private ?int $providerId = null;
 
     #[ORM\Column]
     private ?int $score = null;
 
     #[ORM\Column]
-    private ?int $total_count = null;
+    private ?int $totalCount = null;
 
     #[ORM\Column]
-    private ?int $positive_count = null;
+    private ?int $positiveCount = null;
 
     public function getId(): ?int
     {
@@ -47,12 +58,12 @@ class Score
 
     public function getProviderId(): ?int
     {
-        return $this->provider_id;
+        return $this->providerId;
     }
 
-    public function setProviderId(int $provider_id): self
+    public function setProviderId(int $providerId): self
     {
-        $this->provider_id = $provider_id;
+        $this->providerId = $providerId;
 
         return $this;
     }
@@ -71,24 +82,24 @@ class Score
 
     public function getTotalCount(): ?int
     {
-        return $this->total_count;
+        return $this->totalCount;
     }
 
-    public function setTotalCount(int $total_count): self
+    public function setTotalCount(int $totalCount): self
     {
-        $this->total_count = $total_count;
+        $this->totalCount = $totalCount;
 
         return $this;
     }
 
     public function getPositiveCount(): ?int
     {
-        return $this->positive_count;
+        return $this->positiveCount;
     }
 
-    public function setPositiveCount(int $positive_count): self
+    public function setPositiveCount(int $positiveCount): self
     {
-        $this->positive_count = $positive_count;
+        $this->positiveCount = $positiveCount;
 
         return $this;
     }

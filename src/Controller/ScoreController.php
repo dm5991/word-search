@@ -28,18 +28,12 @@ class ScoreController extends AbstractController
       $score = $scoreRepository->findByTermAndProvider($term, $providerId);
 
       if ($score == null) {
-        $totalCount = $provider->search($term);
-        $totalCountPositive = $provider->search($term . $positiveSuffix);
+        $searchResponse = $provider->search($term);
 
-        $result = ($totalCountPositive / $totalCount) * 10;
+        $totalCount = $searchResponse->positiveCount + $searchResponse->negativeCount;
+        $result = ($searchResponse->positiveCount / $totalCount) * 10;
 
-        $score = new Score();
-        $score->setTerm($term);
-        $score->setProviderId($providerId);
-        $score->setScore($result);
-        $score->setTotalCount($totalCount);
-        $score->setPositiveCount($totalCountPositive);
-
+        $score = new Score($term, $providerId, $result, $totalCount, $searchResponse->positiveCount);
         $scoreRepository->save($score, true);
       }
     } catch (\LogicException $exception) {

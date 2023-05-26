@@ -42,9 +42,9 @@ class ScoreRepository extends ServiceEntityRepository
     public function findByTermAndProvider(string $term, int $providerId): ?Score
     {
         return $this->createQueryBuilder('s')
-            ->andWhere('s.term = :term AND s.provider_id = :provider_id')
+            ->andWhere('s.term = :term AND s.providerId = :providerId')
             ->setParameter('term', $term)
-            ->setParameter('provider_id', $providerId)
+            ->setParameter('providerId', $providerId)
             ->getQuery()
             ->getOneOrNullResult()
         ;
