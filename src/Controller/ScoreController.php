@@ -23,7 +23,6 @@ class ScoreController extends AbstractController
 
     try {
       $provider = $this->getSearchProvider($providerId);
-      $positiveSuffix = ' rocks';
 
       $score = $scoreRepository->findByTermAndProvider($term, $providerId);
 
