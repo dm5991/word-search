@@ -1,5 +1,7 @@
 # word-search
 
+A simple API that calculates the popularity of a certain word and represents that popularity as a score based on the amount of positive and negative comments that include the word.
+
 ## Setup
 
 #### Prerequisites
