@@ -20,7 +20,7 @@ final class Version20230526053631 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('CREATE TABLE score (id INT NOT NULL, term VARCHAR(255) NOT NULL, provider_id INT NOT NULL, score INT NOT NULL, total_count INT NOT NULL, positive_count INT NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE score (id BIGSERIAL NOT NULL, term VARCHAR(255) NOT NULL, provider_id INT NOT NULL, score INT NOT NULL, total_count INT NOT NULL, positive_count INT NOT NULL, PRIMARY KEY(id))');
     }
 
     public function down(Schema $schema): void
