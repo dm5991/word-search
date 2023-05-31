@@ -5,3 +5,8 @@ controllers:
 kernel:
     resource: ../src/Kernel.php
     type: annotation
+
+api_endpoint:
+    path: /api/v1/score/{providerId}/{term}
+    controller: App\Controller\ScoreController::getScore
+    methods: [GET]
